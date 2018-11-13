@@ -1,13 +1,27 @@
+
+
+
 <div class="sidebar">
         <!-- insert your sidebar items here -->
         <h3>Latest News</h3>
-        <h4>New Website Launched</h4>
-        <h5>August 1st, 2013</h5>
-        <p>2013 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
-        <p></p>
-        <h4>New Website Launched</h4>
-        <h5>August 1st, 2013</h5>
-        <p>2013 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
+              <?php
+          
+          $sql_news = "select *  from news";
+          $result_news = $conn->query($sql_news);
+          
+           if($result_news->num_rows) {
+                while($news = $result_news->fetch_assoc() ) {
+                   echo "<h4>".$news['titlu_news']."</h4>";
+                   echo "<h5>".$news['tdata']."</h5>";
+                      echo '<a href="?news='.$news['id'].'">Read More </a>';
+                echo $news['tcontent'];
+                }
+            }
+          
+          
+          ?>
+        
+      
         <h3>Useful Links</h3>
         <ul>
           <li><a href="#">link 1</a></li>
